@@ -1,4 +1,4 @@
-import ChiefCard from "./ChiefCard"
+import ChiefCard from "./ChiefCard.jsx"
 
 export default function ChiefsSection(){
     const chiefs = [

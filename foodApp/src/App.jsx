@@ -4,32 +4,24 @@ import {
     Route
 } from "react-router-dom"
 
-import Navbar from "./components/NavBar.jsx"
-import Footer from "./components/Footer.jsx";
+import LandingRoute from "./LandingRoute.jsx";
+import RequireAuth from "./components/DashboardComponents/RequireAuth.jsx";
+import DashboardRoute from "./DashboardRoutes.jsx";
+import {ROLE_USER} from "./constants/index.jsx";
 
-import Home from "./pages/Home.jsx";
-import Recipes from "./pages/Recipes.jsx";
-import Recipe from "./pages/Recipe.jsx";
-import Settings from "./pages/Settings.jsx";
-import Login from "./pages/Login.jsx";
-import Signup from "./pages/Signup.jsx";
 
 function App() {
     return (
-        <Router>
-            <Navbar />
-            <div className="container main">
+        <>
+            <Router>
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/recipes" element={<Recipes />} />
-                    <Route path="/settings" element={<Settings />} />
-                    <Route path="/recipe" element={<Recipe />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/*" element={<LandingRoute />} />
+                    <Route element={<RequireAuth allowedRoles={ROLE_USER} />}>
+                        <Route path="/dash/*" element={<DashboardRoute />} />
+                    </Route>
                 </Routes>
-            </div>
-            <Footer />
-        </Router>
+            </Router>
+        </>
     )
 }
 

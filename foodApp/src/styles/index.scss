@@ -159,15 +159,18 @@ img{
 .main{
   padding-block: 3vw;
 }
-.container{
+.container {
   padding-inline: 26vw;
+}
+.container2 {
+  padding-inline: 25vw;
 }
 
 
 @import "partials/animations.scss";
 
 @media screen and (max-width: 1280px){
-  .container{
+  .container, .container2{
     padding-inline: 18vw;
   }
 }
@@ -175,12 +178,30 @@ img{
   .container{
     padding-inline: 12vw;
   }
+  .container2{
+    padding-inline: 8vw;
+  }
 }
 @media screen and (max-width: 768px){
   .navbar{
     .nav-links{
       display: none;
     }
+    .nav-links2{
+      display: block;
+      svg{
+        width: 1.5em;
+      }
+    }
+
+    .l3{
+      display: block;
+    }
+
+    .l4{
+      display: none;
+    }
+
     .sidebar-btn{
       display: block;
     }
@@ -206,7 +227,7 @@ img{
   .chief-card{
     box-shadow: 0 5px 10px var(--shadow-color);
   }
-  .container{
+  .container, .container2{
     padding-inline: 6vw;
   }
   .footer{
@@ -220,9 +241,18 @@ img{
   }
 }
 @media screen and (max-width: 480px){
-  .container{
+  .container, .container2{
     padding-inline: 3vw;
   }
+
+  .l3{
+    display: none;
+  }
+
+  .l4{
+    display: block;
+  }
+
   .recipe-content{
     display: block;
   }

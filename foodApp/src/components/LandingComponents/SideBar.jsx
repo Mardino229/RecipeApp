@@ -1,5 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link, useLocation } from "react-router-dom"
+import {faGears} from "@fortawesome/free-solid-svg-icons";
+import React from "react";
 
 export default function Sidebar({links, close}){
     const location = useLocation()
@@ -10,7 +12,7 @@ export default function Sidebar({links, close}){
                     <FontAwesomeIcon icon={link.icon} />
                     {link.name}
                 </Link>
-            )) }
+            ))}
         </div>
     )
 }

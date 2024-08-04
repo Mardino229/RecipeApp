@@ -1,4 +1,4 @@
-import CustomImage from "./CustomImage.jsx"
+import CustomImage from "../LandingComponents/CustomImage.jsx"
 import {Link} from "react-router-dom";
 
 export default function RecipeCard({recipe}){
@@ -7,9 +7,9 @@ export default function RecipeCard({recipe}){
             <img src={recipe.image} alt="{name}" className="product-image"/>
             <h3 className="product-name">{recipe.title}</h3>
             <p className="product-description">{recipe.title}</p>
-            <p className="product-price">{recipe.title} BYN</p>
+            <p className="product-price">{recipe.title}</p>
             <div className="product-actions">
-                <Link to="/recipe" className="btn">VIEW RECIPE</Link>
+                <Link to="/dash/recipe" className="btn">VIEW RECIPE</Link>
             </div>
         </div>
     )

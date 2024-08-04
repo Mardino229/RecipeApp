@@ -1,14 +1,14 @@
-import PreviousSearches from "../components/PreviousSearches.jsx"
-import RecipeCard from "../components/RecipeCard.jsx"
+import PreviousSearches from "../../components/LandingComponents/PreviousSearches.jsx";
+import RecipeCard from "../../components/DashboardComponents/RecipeCard.jsx";
 
-export default function Recipes(){
-    const recipes = [
+export default function MyRecipesPage() {
+    const recipe = [
         {
             title: "Chicken Pan Pizza",
             image: "/img/gallery/img_1.jpg",
             description: "C'est une bonne recette tu y gagneras beaucoup en nutriments",
             authorImg: "/img/top-chiefs/img_1.jpg",
-        }, 
+        },
         {
             title: "Spaghetti and Meatballs",
             image: "/img/gallery/img_4.jpg",
@@ -33,7 +33,7 @@ export default function Recipes(){
             title: "Chicken Pan Pizza",
             image: "/img/gallery/img_1.jpg",
             authorImg: "/img/top-chiefs/img_1.jpg",
-        }, 
+        },
         {
             title: "Spaghetti and Meatballs",
             image: "/img/gallery/img_4.jpg",
@@ -68,10 +68,9 @@ export default function Recipes(){
 
     return (
         <div>
-            <PreviousSearches />
             <div className="recipes-container">
                 {/* <RecipeCard /> */}
-                {recipes.map((recipe, index) => (
+                {recipe.map((recipe, index) => (
                     <RecipeCard key={index} recipe={recipe}/>
                 ))}
             </div>

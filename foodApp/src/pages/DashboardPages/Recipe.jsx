@@ -1,3 +1,4 @@
+import RecipeCard from "../../components/DashboardComponents/RecipeCard.jsx";
 
 export default function Recipe() {
     return (
