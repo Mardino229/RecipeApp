@@ -1,24 +1,33 @@
 import axiosClient from "../services/axios.jsx";
 import useAuth from "./useAuth.jsx";
-import {useNavigate, useLocation} from "react-router-dom";
 import {REFRESH_URL} from "../constants/index.jsx";
 
 const useRefreshToken = () => {
     const { setAuth } = useAuth();
-    const { auth } = useAuth();
 
     return async () => {
 
-        const response = await axiosClient.post(
-            REFRESH_URL,
-            JSON.stringify({refreshToken: auth.refreshToken}),
-        );
-        setAuth(prev => {
-            console.log(JSON.stringify(prev));
-            console.log(response.data.accessToken);
-            return {...prev, accessToken: response.data.accessToken, refreshToken: response.data.refreshToken };
-        });
-        return response.data.accessToken;
+        try {
+            const response = await axiosClient.post(
+                REFRESH_URL,
+                {},
+                {withCredentials: true}
+            );
+            setAuth(prev => {
+                console.log(JSON.stringify(prev));
+                console.log(response.data.accessToken);
+                return {...prev,
+                    roles: response.data.roles,
+                    accessToken: response.data.accessToken,};
+            });
+            return response.data.accessToken;
+        }catch (err){
+            console.log(err);
+            if (err.response?.status === 403) {
+                console.log('Requête annulée :', err.response.data.detail);
+            }
+        }
+
     };
 };
 

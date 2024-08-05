@@ -69,7 +69,7 @@ export default function Home(){
     //     }
     // ].sort(() => Math.random() - 0.5)
 
-    const [recipes, setRecipe] = useState({});
+    const [recipes, setRecipe] = useState();
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
     const location = useLocation();
@@ -82,17 +82,21 @@ export default function Home(){
         const getRecipe = async () => {
             try {
                 const response = await axiosPrivate.get(RECIPE_URL, {
-                    signal: controller.signal,
+                    signal: controller.signal
                 });
                 console.log(response.data);
                 isMounted && setRecipe(response.data);
             }catch(err) {
                 console.log(err);
-                navigate('/login', { state:
-                {
-                    from: location
-                }, replace: true
-            })
+                if (err.name === 'CanceledError') {
+                    console.log('Requête annulée :', err.message);
+                } else {
+                    console.log(err.message);
+                    navigate('/login', {
+                        state: { from: location },
+                        replace: true
+                    });
+                }
             }
         }
         getRecipe();
@@ -109,7 +113,7 @@ export default function Home(){
                 {recipes?.length
                 ? recipes.map((recipe, index) => (
                     <RecipeCard key={index} recipe={recipe}/>
-                    )) : <h1>No recipes </h1>
+                    )) : <h1>No recipes</h1>
                 }
             </div>
         </div>

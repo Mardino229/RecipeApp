@@ -1,8 +1,10 @@
 import React, {useEffect, useState, useRef, useContext} from 'react';
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import axiosClient from "../../services/axios.jsx";
-import {EMAIL_REGEX, LOGIN_URL} from "../../constants/index.jsx";
+import {LOGIN_URL} from "../../constants/index.jsx";
 import useAuth from "../../hooks/useAuth.jsx";
+import useToggle from "../../hooks/useToggle.jsx";
+import useInput from "../../hooks/useInput.jsx";
 
 export default function Login() {
 
@@ -10,7 +12,7 @@ export default function Login() {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/dash";
 
     const userRef = useRef();
     const errRef = useRef();
@@ -18,19 +20,15 @@ export default function Login() {
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
 
-    const [username, setUsername] = useState('');
-    const [validEmail, setValidEmail] = useState(false);
-    const [emailFocus, setEmailFocus] = useState(false);
+    const [username, resetUsername,  userAttribs] = useInput('username','');
 
     const [password, setPassword] = useState('');
+    const [check, toggleCheck] = useToggle('persist', false);
 
     useEffect(() => {
-        userRef.current;
+        userRef.current.focus;
     }, [])
 
-    useEffect(() => {
-        setValidEmail(EMAIL_REGEX.test(username));
-    }, [username])
 
     useEffect(() => {
         setErrMsg('');
@@ -46,10 +44,10 @@ export default function Login() {
             console.log(JSON.stringify(response?.data));
             //console.log(JSON.stringify(response));
             const accessToken = response?.data?.accessToken;
-            const refreshToken = response?.data?.refreshToken;
             const roles = response?.data?.roles;
-            setAuth({ username, password, roles, accessToken, refreshToken });
-            setUsername('');
+            setAuth({ username, password, roles, accessToken});
+            //setUsername('');
+            resetUsername()
             setPassword('');
             setSuccess(true);
             navigate(from, {replace: true});
@@ -69,6 +67,14 @@ export default function Login() {
         console.log('Email:', username);
         console.log('Password:', password);
     };
+
+    // const togglePersist = () => {
+    //     setPersist(prevState => !prevState);
+    // }
+    //
+    // useEffect(() => {
+    //     localStorage.setItem("persist", persist);
+    // }, [persist]);
 
     return (
         <div className="login-container">
@@ -90,8 +96,8 @@ export default function Login() {
                                 id="email"
                                 placeholder="you@example.com"
                                 autoComplete="off"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                ref={userRef}
+                                {... userAttribs}
                                 required
                             />
                         </div>
@@ -108,6 +114,15 @@ export default function Login() {
                             />
                         </div>
                         <button type="submit" className="login-button">Login</button>
+                        <div className="persistCheck">
+                            <input
+                                type="checkbox"
+                                id="persist"
+                                onChange={toggleCheck}
+                                checked={check}
+                            />
+                            <label htmlFor="persist" >Trust this Device</label>
+                        </div>
                         <div className="login-links">
                             <a href="/forgot-password">Forgot password?</a>
                             <Link to="/signup">Create an account</Link>

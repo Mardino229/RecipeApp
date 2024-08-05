@@ -24,6 +24,12 @@
     display: none;
   }
   .nav-links , .nav-links2{
+    button{
+      svg{
+        color: var(--primary-color);
+      }
+      cursor: pointer;
+    }
     a{
       margin-left: 1em;
       color: var(--text-light);
@@ -34,11 +40,6 @@
       svg{
         width: 1.2em;
         margin-right: .5em;
-      }
-      button{
-        svg{
-          color: var(--primary-color);
-        }
       }
       &::before{
         content: '';

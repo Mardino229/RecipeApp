@@ -12,6 +12,7 @@ import Header from "./components/DashboardComponents/Header.jsx";
 import MyRecipesPage from "./pages/DashboardPages/MyRecipes.jsx";
 import NewRecipePage from "./pages/DashboardPages/NewRecipe.jsx";
 import Settings from "./pages/LandingPages/Settings.jsx";
+import PersistLogin from "./components/DashboardComponents/PersistLogin.jsx";
 import Recipe from "./pages/DashboardPages/Recipe.jsx";
 
 function DashboardRoutes() {

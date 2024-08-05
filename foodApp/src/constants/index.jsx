@@ -27,6 +27,7 @@ export const CHIEF_URL = '/chief';
 
 export const RECIPE_URL = '/recipe';
 
+export const LOGOUT_URL = '/deconnexion';
 
 
 export const ROLE_USER = "USER";

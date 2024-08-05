@@ -3,13 +3,13 @@ import {Link, useLocation, useNavigate} from "react-router-dom";
 import {faHome, faList, faGears, faPlus, faPowerOff, faBookmark} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Sidebar from "../LandingComponents/SideBar.jsx";
-import AuthContext from "../../context/AuthProvider.jsx";
+import useLogout from "../../hooks/useLogout.jsx";
 
 function Header() {
     const [showSidebar, setShowSidebar] = useState(false)
     const location = useLocation()
     const navigate = useNavigate()
-    const {setAuth} = useContext(AuthContext);
+    const logout = useLogout()
     const links = [
         {
             name: "Home",
@@ -38,8 +38,8 @@ function Header() {
         },
     ]
 
-    const logout = async () => {
-        setAuth({});
+    const signOut = async () => {
+        await logout();
         navigate('/login')
     }
 
@@ -59,7 +59,7 @@ function Header() {
                             {!(link.name === "Settings") ? link.name : ""}
                         </Link>
                     ))}
-                    <button onClick={logout}><FontAwesomeIcon icon={faPowerOff}/></button>
+                    <button onClick={signOut}><FontAwesomeIcon icon={faPowerOff}/></button>
                     <Link className={location.pathname === "Settings" ? "active" : ""} to="/Settings">
                         <FontAwesomeIcon icon={faGears}/>
                     </Link>
@@ -71,7 +71,7 @@ function Header() {
                             <FontAwesomeIcon icon={link.icon}/>
                         </Link>
                     ))}
-                    <button onClick={logout}><FontAwesomeIcon icon={faPowerOff}/></button>
+                    <button onClick={signOut}><FontAwesomeIcon icon={faPowerOff}/></button>
                 </div>
                 {/*<div onClick={openOrCloseSidebar} className={showSidebar ? "sidebar-btn active" : "sidebar-btn"}>*/}
                 {/*    <div className="bar"></div>*/}
