@@ -13,6 +13,11 @@
   @return calc($duration * var(--animation-speed));
 }
 
+@font-face {
+  font-family: 'Pilowlava';
+  src: url('../fonts/Pilowlava-Atome.otf') format('truetype');
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -101,6 +106,7 @@ img{
 @import "partials/recipes-section.scss";
 @import "partials/recipe.scss";
 @import "partials/login.scss";
+@import "partials/recipeform.scss";
 
 
 
@@ -215,6 +221,7 @@ img{
     }
   }
 
+
   .skill-item{
     display: inline-block;
     margin: .75em;
@@ -247,6 +254,14 @@ img{
 
   .l3{
     display: none;
+  }
+
+  .group{
+    flex-wrap: wrap;
+  }
+
+  .form-group {
+    width: 100%;
   }
 
   .l4{

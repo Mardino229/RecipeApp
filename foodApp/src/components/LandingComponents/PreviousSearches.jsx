@@ -8,15 +8,25 @@ export default function PreviousSearches(){
         <div className="previous-searches section">
             <h2>Previous Searches</h2>
             <div className="previous-searches-container">
-                { searches.map((search, index) => (<div key={index} style={{animationDelay: index * .1 + "s"}} className="search-item">
-                    {search}
-                </div>)) }
+                {searches.map((search, index) => (
+                    <div key={index} style={{animationDelay: index * .1 + "s"}} className="search-item">
+                        {search}
+                    </div>))}
             </div>
-            <div className="search-box">
-                <input type="text" placeholder="Search ..." />
-                <button className="btn">
-                    <FontAwesomeIcon icon={faSearch} />
-                </button>
+            {/*<div className="search-box">*/}
+            {/*    /!*<input type="text" placeholder="Search ..."/>*!/*/}
+            {/*    /!*<button className="btn">*!/*/}
+            {/*    /!*    <FontAwesomeIcon icon={faSearch}/>*!/*/}
+            {/*    /!*</button>*!/*/}
+            {/*</div>*/}
+            <div className="wrap-input-18">
+                <div className="search">
+                    <div>
+                        <input type="text" placeholder="Search . . ."/>
+                    </div>
+                </div>
+                <FontAwesomeIcon icon={faSearch}/>
+
             </div>
         </div>
     )

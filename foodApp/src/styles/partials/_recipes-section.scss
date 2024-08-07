@@ -1,7 +1,7 @@
 .recipes-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    animation: getAnimationDuration(.8s) slideOnBack forwards;
+    //display: grid;
+    //grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    animation: getAnimationDuration(.8s) slideInLeft forwards;
     grid-gap: 1em;
     &:nth-child(2){
         animation-delay: .1s;
@@ -27,96 +27,201 @@
     &:nth-child(5){
         animation-delay: .8s;
     }
+
+    .add{
+        display: flex;
+        justify-content: flex-end;
+        margin-block-end: 1em;
+        button{
+            padding: .5em;
+            width: 40px;
+            cursor: pointer;
+            background-color: #fed330;
+            border: none;
+            color: white;
+            font-size: 1em;
+            font-weight: bold;
+            span{
+                display: none;
+            }
+            transition: width .5s;
+            &:hover{
+                span{
+                    display: inline;
+                }
+                width: 200px;
+            }
+        }
+    }
+
 }
-.recipe-card{
-    isolation: isolate;
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px var(--shadow-color);
-    background-color: var(--background-color);
-    .recipe-card-info{
-        padding: 15px;
-    }
-    .custom-image{
-        z-index: -1;
-    }
-    .auther-img{
-        height: 60px;
-        width: 60px;
-        border-radius: 50%;
-        border: 3px solid var(--background-light);
-        box-shadow: 0 1px 3px var(--shadow-color);
-        margin-top: -50px;
-        z-index: 2;
-    }
-    .recipe-title{
-        font-size: 1.25em;
-        font-weight: bold;
-        margin-bottom: .5em;
-        color: var(--text-color);
-        margin-top: .25em;
-    }
-    .recipe-desc{
-        color: var(--text-light);
-        font-size: .9em;
-        letter-spacing: 1px
-    }
-    .view-btn{
-        font-size: 1em;
-        font-weight: bold;
-        color: var(--primary-color);
-        margin-top: .75em;
-        display: inline-block;
-    }
+.recipe-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    transition: transform 0.3s;
 }
 
-.product-card {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    transition: transform 0.2s;
-}
-
-.product-card:hover {
+.recipe-card:hover {
     transform: translateY(-10px);
 }
 
-.product-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
+.recipe-title {
+    font-size: 1.5em;
+    margin: 0 0 8px;
 }
 
-.product-name {
-    font-size: 1.25em;
-    font-weight: bold;
-    margin-bottom: .5em;
-    color: var(--text-color);
-    margin-top: .25em;
+.recipe-description {
+    color: #777;
+    margin: 0 0 16px;
 }
 
-.product-description {
-    color: #666;
-    font-size: 0.9em;
-    margin: 5px 0;
-}
-
-.product-price {
-    font-size: 1.1em;
-    font-weight: bold;
-    margin: 10px 0;
-}
-
-.product-actions {
+.recipe-image-container {
+    width: 100%;
+    height: 180px;
+    background-color: #f9f9f9;
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
 }
+
+.recipe-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.recipe-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    .title{
+        font-weight: bold;
+        color: #777;
+    }
+}
+
+.author-image {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.recipe-stats {
+    display: flex;
+    justify-content: space-between;
+    svg{
+        color: red;
+        height: 25px;
+        width: 25px;
+        cursor: pointer;
+        padding-right: .5em;
+    }
+    span{
+        padding-right: .2em;
+    }
+}
+
+.comments, .likes {
+    display: flex;
+    align-items: center;
+}
+//.recipe-card{
+//    isolation: isolate;
+//    border-radius: 5px;
+//    overflow: hidden;
+//    box-shadow: 0 5px 15px var(--shadow-color);
+//    background-color: var(--background-color);
+//    .recipe-card-info{
+//        padding: 15px;
+//    }
+//    .custom-image{
+//        z-index: -1;
+//    }
+//    .auther-img{
+//        height: 60px;
+//        width: 60px;
+//        border-radius: 50%;
+//        border: 3px solid var(--background-light);
+//        box-shadow: 0 1px 3px var(--shadow-color);
+//        margin-top: -50px;
+//        z-index: 2;
+//    }
+//    .recipe-title{
+//        font-size: 1.25em;
+//        font-weight: bold;
+//        margin-bottom: .5em;
+//        color: var(--text-color);
+//        margin-top: .25em;
+//    }
+//    .recipe-desc{
+//        color: var(--text-light);
+//        font-size: .9em;
+//        letter-spacing: 1px
+//    }
+//    .view-btn{
+//        font-size: 1em;
+//        font-weight: bold;
+//        color: var(--primary-color);
+//        margin-top: .75em;
+//        display: inline-block;
+//    }
+//}
+//
+//.product-card {
+//    background-color: white;
+//    border-radius: 10px;
+//    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+//    padding: 20px;
+//    text-align: center;
+//    transition: transform 0.2s;
+//}
+//
+//.product-card:hover {
+//    transform: translateY(-10px);
+//}
+//
+//.product-image {
+//    width: 100px;
+//    height: 100px;
+//    border-radius: 50%;
+//    object-fit: cover;
+//    margin-bottom: 10px;
+//}
+//
+//.product-name {
+//    font-size: 1.25em;
+//    font-weight: bold;
+//    margin-bottom: .5em;
+//    color: var(--text-color);
+//    margin-top: .25em;
+//}
+//
+//.product-description {
+//    color: #666;
+//    font-size: 0.9em;
+//    margin: 5px 0;
+//}
+//
+//.product-price {
+//    font-size: 1.1em;
+//    font-weight: bold;
+//    margin: 10px 0;
+//}
+//
+//.product-actions {
+//    display: flex;
+//    justify-content: center;
+//    gap: 10px;
+//    margin-top: 10px;
+//}
 
 .action-icon {
     font-size: 1.2em;

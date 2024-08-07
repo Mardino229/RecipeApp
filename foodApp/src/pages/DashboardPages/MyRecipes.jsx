@@ -1,79 +1,64 @@
 import PreviousSearches from "../../components/LandingComponents/PreviousSearches.jsx";
 import RecipeCard from "../../components/DashboardComponents/RecipeCard.jsx";
+import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {Link, useLocation, useNavigate} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate.jsx";
+import {RECIPE_CHIEF_URL, RECIPE_URL} from "../../constants/index.jsx";
 
 export default function MyRecipesPage() {
-    const recipe = [
-        {
-            title: "Chicken Pan Pizza",
-            image: "/img/gallery/img_1.jpg",
-            description: "C'est une bonne recette tu y gagneras beaucoup en nutriments",
-            authorImg: "/img/top-chiefs/img_1.jpg",
-        },
-        {
-            title: "Spaghetti and Meatballs",
-            image: "/img/gallery/img_4.jpg",
-            authorImg: "/img/top-chiefs/img_2.jpg",
-        },
-        {
-            title: "American Cheese Burger",
-            image: "/img/gallery/img_5.jpg",
-            authorImg: "/img/top-chiefs/img_3.jpg",
-        },
-        {
-            title: "Mutton Biriyani",
-            image: "/img/gallery/img_6.jpg",
-            authorImg: "/img/top-chiefs/img_5.jpg",
-        },
-        {
-            title: "Japanese Sushi",
-            image: "/img/gallery/img_10.jpg",
-            authorImg: "/img/top-chiefs/img_6.jpg",
-        },
-        {
-            title: "Chicken Pan Pizza",
-            image: "/img/gallery/img_1.jpg",
-            authorImg: "/img/top-chiefs/img_1.jpg",
-        },
-        {
-            title: "Spaghetti and Meatballs",
-            image: "/img/gallery/img_4.jpg",
-            authorImg: "/img/top-chiefs/img_2.jpg",
-        },
-        {
-            title: "American Cheese Burger",
-            image: "/img/gallery/img_5.jpg",
-            authorImg: "/img/top-chiefs/img_3.jpg",
-        },
-        {
-            title: "Mutton Biriyani",
-            image: "/img/gallery/img_6.jpg",
-            authorImg: "/img/top-chiefs/img_5.jpg",
-        },
-        {
-            title: "Japanese Sushi",
-            image: "/img/gallery/img_10.jpg",
-            authorImg: "/img/top-chiefs/img_6.jpg",
-        },
-        {
-            title: "American Cheese Burger",
-            image: "/img/gallery/img_5.jpg",
-            authorImg: "/img/top-chiefs/img_3.jpg",
-        },
-        {
-            title: "Mutton Biriyani",
-            image: "/img/gallery/img_6.jpg",
-            authorImg: "/img/top-chiefs/img_5.jpg",
+
+    const [recipesChief, setRecipeChief] = useState();
+    const axiosPrivate = useAxiosPrivate();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+        let isMounted = true;
+
+        const controller = new AbortController();
+
+        const getRecipe = async () => {
+            try {
+                const response = await axiosPrivate.get(RECIPE_CHIEF_URL, {
+                    signal: controller.signal
+                });
+                console.log(response.data);
+                isMounted && setRecipeChief(response.data);
+            }catch(err) {
+                console.log(err);
+                if (err.name === 'CanceledError') {
+                    console.log('Requête annulée :', err.message);
+                } else {
+                    console.log(err.message);
+                    navigate('/login', {
+                        state: { from: location },
+                        replace: true
+                    });
+                }
+            }
         }
-    ].sort(() => Math.random() - 0.5)
+        getRecipe();
+        return () =>{
+            isMounted = false;
+            controller.abort();
+        }
+    }, []);
 
     return (
-        <div>
-            <div className="recipes-container">
-                {/* <RecipeCard /> */}
-                {recipe.map((recipe, index) => (
-                    <RecipeCard key={index} recipe={recipe}/>
-                ))}
+        <div className="recipes-container">
+            <div className="add">
+                <Link to="/dash/new-recipe">
+                    <button > <FontAwesomeIcon icon={faPlus}/> <span>Ajouter une nouvelle recette</span></button>
+                </Link>
             </div>
+            {/* <RecipeCard /> */}
+            {recipesChief?.length
+                ? recipesChief.map((recipe, index) => (
+                    <RecipeCard key={index} recipe={recipe}/>
+                )) : <h1>No recipes</h1>
+            }
         </div>
     )
 }

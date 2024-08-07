@@ -1,0 +1,71 @@
+.form-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  //width: 425px;
+  margin: 20px auto;
+  animation: getAnimationDuration(.8s) popOut forwards;
+
+  img{
+    border-top-left-radius: 0.5rem; /* 8px */
+    border-top-right-radius: 0.5rem; /* 8px */
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
+
+  .group{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .head{
+    padding-bottom: 1em;
+    p{
+      color: #a5b1c2;
+    }
+  }
+
+  .data{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-block: 1em;
+    svg{
+      height: 30px;
+      width: 30px;
+      padding: 1em;
+      cursor: pointer;
+      color: red;
+    }
+    textarea{
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  }
+  button{
+    padding: 10px;
+    background-color: #fed330;
+    border-radius: 1em;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+  }
+  .last{
+    margin-block: 10px;
+  }
+}
+
+textarea{
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+

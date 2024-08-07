@@ -7,6 +7,7 @@
 
 .recipe-content {
   display: flex;
+  align-items: center;
   gap: 20px;
   flex-wrap: wrap;
 }
@@ -44,10 +45,18 @@
 
 .recipe-preparation {
   margin-top: 30px;
+
 }
 
 .recipe-preparation .step {
   display: flex;
+}
+
+.step{
+  margin-left: .6em;
+  p{
+    margin-left: 1.5em;
+  }
 }
 
 .recipe-preparation h2 {

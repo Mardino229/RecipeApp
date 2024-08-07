@@ -18,9 +18,9 @@ export default function HeroSection() {
         <div className="section hero">
             <div className="col typography">
                 <h1 className="title">What Are We About</h1>
-                <p className="info">FoodiesHub is a place where you can please your soul and tummy with delicious food
+                <p className="info"> <span>C<span className="logo">oo</span>kHub</span> is a place where you can please your soul and tummy with delicious food
                     recepies of all cuisine. And our service is absolutely free. So start exploring now.</p>
-                <Link to="/recipes" className="btn">explore now</Link>
+                <Link to="/login" className="btn">explore now</Link>
             </div>
             <div className="col gallery">
                 {images.map((image, index) => (

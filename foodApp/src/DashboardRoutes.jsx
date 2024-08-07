@@ -13,7 +13,7 @@ import MyRecipesPage from "./pages/DashboardPages/MyRecipes.jsx";
 import NewRecipePage from "./pages/DashboardPages/NewRecipe.jsx";
 import Settings from "./pages/LandingPages/Settings.jsx";
 import PersistLogin from "./components/DashboardComponents/PersistLogin.jsx";
-import Recipe from "./pages/DashboardPages/Recipe.jsx";
+import RecipeView from "./pages/DashboardPages/RecipeView.jsx";
 
 function DashboardRoutes() {
     return (
@@ -22,7 +22,7 @@ function DashboardRoutes() {
             <div className="container main">
                 <Routes>
                     <Route path="/" element={<Home/>}/>
-                    <Route path="/recipe" element={<Recipe/>}/>
+                    <Route path="/recipe/:id" element={<RecipeView/>}/>
                     <Route path="/my-recipes" element={<MyRecipesPage/>}/>
                     <Route path="/new-recipe" element={<NewRecipePage/>}/>
                     <Route path="/settings" element={<Settings/>}/>

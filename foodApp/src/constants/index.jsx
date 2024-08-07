@@ -27,6 +27,9 @@ export const CHIEF_URL = '/chief';
 
 export const RECIPE_URL = '/recipe';
 
+export const RECIPE_CHIEF_URL = '/chiefrecipe';
+
+
 export const LOGOUT_URL = '/deconnexion';
 
 

@@ -1,7 +1,8 @@
 .navbar{
   height: 55px;
   box-shadow: 0 3px 6px var(--shadow-color);
-  background-color: var(--background-color);
+  //background-color: var(--background-color);
+  background-color: #4b6584;
   color: var(--text-color);
   display: flex;
   justify-content: space-between;
@@ -16,6 +17,7 @@
     font-weight: bolder;
     color: var(--primary-color);
     text-shadow: 0 1px 3px var(--shadow-color);
+    font-family: Pilowlava;
     span{
       color: var(--text-color);
     }
@@ -27,12 +29,13 @@
     button{
       svg{
         color: var(--primary-color);
+        padding-inline: 3px;
       }
       cursor: pointer;
     }
     a{
       margin-left: 1em;
-      color: var(--text-light);
+      color: white;
       letter-spacing: 2px;
       text-transform: uppercase;
       position: relative;

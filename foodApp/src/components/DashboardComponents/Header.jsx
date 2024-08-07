@@ -27,7 +27,7 @@ function Header() {
             icon: faList
         },
         // {
-        //     name: "New Recipe",
+        //     name: "New RecipeView",
         //     path: "/dash/new-recipe",
         //     icon: faPlus
         // },
@@ -54,7 +54,7 @@ function Header() {
                     {links.map(link => (
                         <Link className={location.pathname === link.path ? "active" : ""} to={link.path}
                               key={link.name}>
-                            {(link.name === "New Recipe") ? <FontAwesomeIcon icon={link.icon}/> : ""}
+                            {(link.name === "New RecipeView") ? <FontAwesomeIcon icon={link.icon}/> : ""}
                             {(link.name === "") ? <FontAwesomeIcon icon={link.icon}/> : ""}
                             {!(link.name === "Settings") ? link.name : ""}
                         </Link>
