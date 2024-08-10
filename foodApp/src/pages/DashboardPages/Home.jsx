@@ -26,7 +26,7 @@ export default function Home(){
                     signal: controller.signal
                 });
                 console.log(response.data);
-                isMounted && setRecipe(response.data);
+                isMounted && setRecipe(response.data.sort(() => Math.random() - 0.5));
             }catch(err) {
                 console.log(err);
                 if (err.name === 'CanceledError') {

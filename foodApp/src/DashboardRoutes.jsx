@@ -12,8 +12,9 @@ import Header from "./components/DashboardComponents/Header.jsx";
 import MyRecipesPage from "./pages/DashboardPages/MyRecipes.jsx";
 import NewRecipePage from "./pages/DashboardPages/NewRecipe.jsx";
 import Settings from "./pages/LandingPages/Settings.jsx";
-import PersistLogin from "./components/DashboardComponents/PersistLogin.jsx";
 import RecipeView from "./pages/DashboardPages/RecipeView.jsx";
+import NotFoundPage from "./pages/DashboardPages/404Page.jsx";
+import FavouritesPage from "./pages/DashboardPages/Favourites.jsx";
 
 function DashboardRoutes() {
     return (
@@ -24,8 +25,10 @@ function DashboardRoutes() {
                     <Route path="/" element={<Home/>}/>
                     <Route path="/recipe/:id" element={<RecipeView/>}/>
                     <Route path="/my-recipes" element={<MyRecipesPage/>}/>
-                    <Route path="/new-recipe" element={<NewRecipePage/>}/>
+                    <Route path="/my-favourites-recipes" element={<FavouritesPage/>}/>
+                    <Route path="/new-recipe/:id?" element={<NewRecipePage/>}/>
                     <Route path="/settings" element={<Settings/>}/>
+                    <Route path="*" element={<NotFoundPage/>}/>
                 </Routes>
             </div>
             <Footer/>

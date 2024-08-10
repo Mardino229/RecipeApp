@@ -63,6 +63,27 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 15px;
     transition: transform 0.3s;
+
+    .action{
+        display: flex;
+        justify-content: space-between;
+        .edit{
+            background-color: #4cd137;
+        }
+        .delete{
+            background-color: #e84118;
+        }
+        button{
+            padding: .5em;
+            color: white;
+            font-size: 1em;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-block-start: 10px;
+        }
+    }
 }
 
 .recipe-card:hover {

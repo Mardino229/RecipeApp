@@ -29,6 +29,21 @@ export const RECIPE_URL = '/recipe';
 
 export const RECIPE_CHIEF_URL = '/chiefrecipe';
 
+export const LIKE_RECIPE_URL = '/like/';
+
+export const FAVOURITE_RECIPE_URL = '/favourite/';
+
+export const HAS_LIKE_RECIPE_URL = '/hasLiked/';
+
+export const HAS_FAVOURITE_RECIPE_URL = '/hasFavourite/';
+
+export const MY_FAVOURITES_RECIPE_URL = '/favourites';
+
+export const RESET_MDP_URL = '/modifier-password';
+
+export const NEW_MDP_URL = '/nouveau-password';
+
+export const VERIFY_URL = '/verify-recipe/';
 
 export const LOGOUT_URL = '/deconnexion';
 

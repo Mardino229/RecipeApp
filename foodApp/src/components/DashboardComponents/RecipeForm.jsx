@@ -1,17 +1,58 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import {faTrashCan, faPlus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {BASE_URL, RECIPE_URL} from "../../constants/index.jsx";
+import {useNavigate, useParams} from "react-router-dom";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate.jsx";
 
 const RecipeForm = ({ onSubmit }) => {
 
+    const { id } = useParams();
+    const axiosPrivate = useAxiosPrivate();
+    const navigate = useNavigate();
     const [recipe, setRecipe] = useState({
-            name: "",
+            title: "",
             description: "",
             image: null,
             ingredients: [""],
-            instructions: [{ number: 1, name: '', description: '' }],
+            steps: [{ number: 1, name: '', description: '' }],
             });
     const [imagePreview, setImagePreview] = useState(null);
+
+    id && useEffect(() => {
+        let isMounted = true;
+
+        const controller = new AbortController();
+
+        const getRecipe = async () => {
+            try {
+                const response = await axiosPrivate.get(RECIPE_URL+"/"+id, {
+                    signal: controller.signal
+                });
+                console.log(response.data);
+                setRecipe(response.data)
+                console.log(recipe)
+                setImagePreview(response.data?.imageUrl)
+                isMounted && setRecipe(response.data);
+            }catch(err) {
+                console.log(err);
+                if (err.name === 'CanceledError') {
+                    console.log('Requête annulée :', err.message);
+                }else if (err.response?.status === 403) {
+                    navigate('/dash/my-recipes');
+                }
+                else {
+                    console.log(err.message);
+                }
+            }
+        }
+        getRecipe();
+        return () =>{
+            isMounted = false;
+            controller.abort();
+        }
+    }, [id]);
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -61,26 +102,26 @@ const RecipeForm = ({ onSubmit }) => {
 
     const handleInstructionChange = (index, event) => {
         const { name, value } = event.target;
-        const newInstructions = [...recipe.instructions];
+        const newInstructions = [...recipe.steps];
         newInstructions[index][name] = value;
         setRecipe((prevRecipe) => ({
             ...prevRecipe,
-            instructions: newInstructions,
+            steps: newInstructions,
         }));
     };
 
     const handleAddInstruction = () => {
         setRecipe((prevRecipe) => ({
             ...prevRecipe,
-            instructions: [...prevRecipe.instructions, { number: prevRecipe.instructions.length + 1, name: '', description: '' }],
+            steps: [...prevRecipe.steps, { number: prevRecipe.steps.length + 1, name: '', description: '' }],
         }));
     };
 
     const handleRemoveInstruction = (index) => {
-        const newInstructions = recipe.instructions.filter((_, i) => i !== index);
+        const newInstructions = recipe.steps.filter((_, i) => i !== index);
         setRecipe((prevRecipe) => ({
             ...prevRecipe,
-            instructions: newInstructions.map((instruction, idx) => ({
+            steps: newInstructions.map((instruction, idx) => ({
                 ...instruction,
                 number: idx + 1,
             })),
@@ -95,25 +136,28 @@ const RecipeForm = ({ onSubmit }) => {
         event.preventDefault();
         const formData = new FormData();
         formData.append('recipe', new Blob([JSON.stringify({
-            title: recipe.name,
+            title: recipe.title,
             description: recipe.description,
             ingredients: recipe.ingredients,
-            steps: recipe.instructions
+            steps: recipe.steps
         })], { type: 'application/json' }));
-        formData.append('image', recipe.image);
+        recipe.image?
+        formData.append('image', recipe.image)
+        : formData.append('image', null)
+        console.log(recipe.image)
         console.log(formData)
         onSubmit(formData);
     };
 
     return (
-        <form className="login-form" onSubmit={handleSubmit} encType="multipart/form-data" >
+        <form className="login-form recipe" onSubmit={handleSubmit} encType="multipart/form-data" >
             <div className="form-group">
                 <label>Nom :</label>
                 <input
                     type="text"
-                    value={recipe.name}
+                    value={recipe.title}
                     onChange={handleChange}
-                    name="name"
+                    name="title"
                     placeholder="Name"
                 />
             </div>
@@ -129,10 +173,10 @@ const RecipeForm = ({ onSubmit }) => {
             <div className="form-group">
                 <label>Image :</label>
                 <img
-                    src= {imagePreview? imagePreview : "https://placehold.co/600x400" }
+                    src= {id? BASE_URL+"/"+imagePreview : imagePreview? imagePreview : "https://placehold.co/600x400" }
                     width={400}
                     height={225}
-                    alt="Mushroom Risotto"
+                    alt="Your image here"
                     className="rounded-t-lg object-cover w-full aspect-video"
                 />
                 <input
@@ -149,7 +193,7 @@ const RecipeForm = ({ onSubmit }) => {
                             <input
                                 type="text"
                                 placeholder={`Ingrédient ${index + 1}`}
-                                value={ingredient}
+                                value={!id? ingredient:ingredient.name}
                                 onChange={(e) => handleIngredientChange(index, e)}
                             />
                             <FontAwesomeIcon icon={faTrashCan} onClick={() => handleRemoveIngredient(index)}/>
@@ -160,7 +204,7 @@ const RecipeForm = ({ onSubmit }) => {
                 </div>
                 <div className="form-group">
                     <label>Instructions :</label>
-                    {recipe.instructions.map((instruction, index) => (
+                    {recipe.steps.map((instruction, index) => (
                         <div key={index} className="data">
                             <div>
                                 <input

@@ -19,14 +19,20 @@ export default function PreviousSearches(){
             {/*    /!*    <FontAwesomeIcon icon={faSearch}/>*!/*/}
             {/*    /!*</button>*!/*/}
             {/*</div>*/}
-            <div className="wrap-input-18">
-                <div className="search">
-                    <div>
-                        <input type="text" placeholder="Search . . ."/>
-                    </div>
-                </div>
-                <FontAwesomeIcon icon={faSearch}/>
+            {/*<div className="wrap-input-18">*/}
+            {/*    <div className="search">*/}
+            {/*        <div>*/}
+            {/*            <input type="text" placeholder="Search . . ."/>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*    <FontAwesomeIcon icon={faSearch}/>*/}
 
+            {/*</div>*/}
+            <div className="wrap-input-17">
+                <div className="search-box">
+                    <button className="btn-search"><FontAwesomeIcon icon={faSearch}/></button>
+                    <input type="text" className="input-search" placeholder="Type to Search..."/>
+                </div>
             </div>
         </div>
     )

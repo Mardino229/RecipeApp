@@ -6,6 +6,7 @@ import {Link, useLocation, useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate.jsx";
 import {RECIPE_CHIEF_URL, RECIPE_URL} from "../../constants/index.jsx";
+import RecipeOwn from "../../components/DashboardComponents/RecipeOwn.jsx";
 
 export default function MyRecipesPage() {
 
@@ -48,9 +49,13 @@ export default function MyRecipesPage() {
 
     return (
         <div className="recipes-container">
+            <div className="head">
+                <h2>Create your own recipes</h2>
+                 <p>Recipes created by you appear here </p>
+            </div>
             <div className="add">
                 <Link to="/dash/new-recipe">
-                    <button > <FontAwesomeIcon icon={faPlus}/> <span>Ajouter une nouvelle recette</span></button>
+                    <button><FontAwesomeIcon icon={faPlus}/> <span>Ajouter une nouvelle recette</span></button>
                 </Link>
             </div>
             {/* <RecipeCard /> */}

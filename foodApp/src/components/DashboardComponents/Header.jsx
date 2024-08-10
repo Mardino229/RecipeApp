@@ -18,7 +18,7 @@ function Header() {
         },
         {
             name: "Favorites",
-            path: "/dash/favorites",
+            path: "/dash/my-favourites-recipes",
             icon: faBookmark
         },
         {

@@ -43,8 +43,10 @@ export default function RecipeView() {
 
     return (
         <div className="recipe-container section">
-            <h1 className="title">{recipe?.title}</h1>
-            <p>{recipe?.description}</p>
+            <div className="preview">
+                <h1 className="title">{recipe?.title}</h1>
+                <p>{recipe?.description}</p>
+            </div>
 
             <div className="recipe-content">
                 <div className="recipe-image">
@@ -67,7 +69,7 @@ export default function RecipeView() {
             </div>
 
             <div className="recipe-preparation">
-                <h2>Étapes-Préparation</h2>
+                <h2>Steps of the preparation</h2>
                 {recipe?.steps?.length
                     ? recipe.steps.map((step, index) => (
                         <div className="step" key={index}>

@@ -5,6 +5,8 @@
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   grid-gap: 1em;
+  bottom: 0;
+  position: page;
   animation: getAnimationDuration(.8s) slideInLeft forwards;
   .logo {
     font-size: 1.5em;

@@ -7,7 +7,7 @@ export default function Settings(){
     const [settings, setSettings] = useState({
         "--background-color": "#fff",
         "--background-light": "#fff",
-        "--primary-color": "rgb(255, 0, 86)",
+        "--primary-color": "rgb(255,100,47)",
         "--shadow-color": "rgba(0,0,0,0.2)",
         "--text-color": "#0A0A0A",
         "--text-light": "#575757",

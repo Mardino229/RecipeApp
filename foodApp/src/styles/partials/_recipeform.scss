@@ -1,18 +1,18 @@
 .form-container {
   background-color: white;
-  padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  //box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   //width: 425px;
-  margin: 20px auto;
+  margin: 5px auto;
   animation: getAnimationDuration(.8s) popOut forwards;
-
   img{
     border-top-left-radius: 0.5rem; /* 8px */
     border-top-right-radius: 0.5rem; /* 8px */
     aspect-ratio: 16 / 9;
     width: 100%;
   }
+
+
 
   .group{
     display: flex;
@@ -21,7 +21,13 @@
   }
 
   .head{
-    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-left: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #4b6584;
+    padding-bottom: 5px;
+    color: white;
     p{
       color: #a5b1c2;
     }
