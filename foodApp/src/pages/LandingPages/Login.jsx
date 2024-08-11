@@ -23,7 +23,7 @@ export default function Login() {
     const [username, resetUsername,  userAttribs] = useInput('username','');
 
     const [password, setPassword] = useState('');
-    const [check, toggleCheck] = useToggle('persist', false);
+    const [check, toggleCheck] = useToggle('persist', true);
 
     useEffect(() => {
         userRef.current.focus;
@@ -125,7 +125,7 @@ export default function Login() {
                         </div>
                         <div className="login-links">
                             <a href="/forgot-password">Forgot password?</a>
-                            <Link to="/signup">Create an account</Link>
+                            <Link to="/signup">Need of account?</Link>
                         </div>
                     </form>)}
         </div>

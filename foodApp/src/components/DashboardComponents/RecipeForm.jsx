@@ -32,7 +32,7 @@ const RecipeForm = ({ onSubmit }) => {
                 console.log(response.data);
                 setRecipe(response.data)
                 console.log(recipe)
-                setImagePreview(response.data?.imageUrl)
+                setImagePreview(BASE_URL+"/"+response.data?.imageUrl)
                 isMounted && setRecipe(response.data);
             }catch(err) {
                 console.log(err);
@@ -173,7 +173,7 @@ const RecipeForm = ({ onSubmit }) => {
             <div className="form-group">
                 <label>Image :</label>
                 <img
-                    src= {id? BASE_URL+"/"+imagePreview : imagePreview? imagePreview : "https://placehold.co/600x400" }
+                    src= {imagePreview? imagePreview : "https://placehold.co/600x400" }
                     width={400}
                     height={225}
                     alt="Your image here"

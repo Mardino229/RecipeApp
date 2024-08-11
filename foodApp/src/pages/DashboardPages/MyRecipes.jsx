@@ -1,6 +1,6 @@
 import PreviousSearches from "../../components/LandingComponents/PreviousSearches.jsx";
 import RecipeCard from "../../components/DashboardComponents/RecipeCard.jsx";
-import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {faPlus, faQuestion} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
@@ -55,14 +55,17 @@ export default function MyRecipesPage() {
             </div>
             <div className="add">
                 <Link to="/dash/new-recipe">
-                    <button><FontAwesomeIcon icon={faPlus}/> <span>Ajouter une nouvelle recette</span></button>
+                    <button><FontAwesomeIcon icon={faPlus}/> <span>Add recipe</span></button>
                 </Link>
             </div>
             {/* <RecipeCard /> */}
             {recipesChief?.length
                 ? recipesChief.map((recipe, index) => (
                     <RecipeCard key={index} recipe={recipe}/>
-                )) : <h1>No recipes</h1>
+                )) : <div className="no">
+                    <FontAwesomeIcon className="quest" icon={faQuestion}/>
+                    <h1 className="noRecipe">No recipes</h1>
+                </div>
             }
         </div>
     )

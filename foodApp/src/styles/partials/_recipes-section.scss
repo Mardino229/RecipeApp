@@ -90,6 +90,20 @@
     transform: translateY(-10px);
 }
 
+.noRecipe{
+    text-align: center;
+    color: #4b6584;
+}
+.quest{
+    font-size: 20em;
+    color: #4b6584;
+}
+.no{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .recipe-title {
     font-size: 1.5em;
     margin: 0 0 8px;

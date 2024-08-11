@@ -35,6 +35,8 @@ export const FAVOURITE_RECIPE_URL = '/favourite/';
 
 export const HAS_LIKE_RECIPE_URL = '/hasLiked/';
 
+export const HAS_CREATED_RECIPE_URL = '/hasCreated/';
+
 export const HAS_FAVOURITE_RECIPE_URL = '/hasFavourite/';
 
 export const MY_FAVOURITES_RECIPE_URL = '/favourites';

@@ -103,7 +103,7 @@ export default function signup() {
                         </p>5
                     </section>):
                 (<form className="login-form" onSubmit={handleSubmit}>
-                    <h2>Create a account</h2>
+                    <h2>Signup</h2>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <div className="inputgroup">
                         <div className="form-group">
@@ -222,7 +222,7 @@ export default function signup() {
                         Sign up
                     </button>
                     <div className="login-links">
-                        <a href="/forgot-password">Forgot password?</a>
+                        <p>Already account?</p>
                         <Link to="/login">Login</Link>
                     </div>
                 </form>)}

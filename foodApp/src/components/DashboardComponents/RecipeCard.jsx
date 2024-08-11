@@ -6,7 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useEffect, useState} from "react";
 import React from "react";
 import {
-    FAVOURITE_RECIPE_URL,
+    FAVOURITE_RECIPE_URL, HAS_CREATED_RECIPE_URL,
     HAS_FAVOURITE_RECIPE_URL, HAS_LIKE_RECIPE_URL,
     LIKE_RECIPE_URL,
     RECIPE_URL,
@@ -17,6 +17,8 @@ import {axiosPrivate} from "../../services/axios.jsx";
 export default function RecipeCard({recipe}){
     const [like, setLike] = useState(true)
     const [nbLike, setNbLike] = useState(recipe.nbLike)
+
+    const [created, setCreated] = useState(false)
 
     const [key, setKey] = useState(0);
 
@@ -36,13 +38,26 @@ export default function RecipeCard({recipe}){
                 const response = await axiosPrivate.get(
                     HAS_LIKE_RECIPE_URL + recipe.id
                 )
-
                 setLike(!response.data)
             } catch (err) {
                 console.log(err);
             }
         }
         hasLike()
+    }, [recipe.id]);
+
+    useEffect( () => {
+        async function hasCreated() {
+            try {
+                const response = await axiosPrivate.get(
+                    HAS_CREATED_RECIPE_URL + recipe.id
+                )
+                setCreated(response.data)
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        hasCreated()
     }, [recipe.id]);
 
     useEffect( () => {
@@ -63,7 +78,7 @@ export default function RecipeCard({recipe}){
         try {
             await axiosPrivate.delete(
                 RECIPE_URL+'/'+recipe.id)
-            refreshComponent()
+            window.location.reload();
         }catch(err){
             console.log(err)
         }
@@ -94,6 +109,7 @@ export default function RecipeCard({recipe}){
                 FAVOURITE_RECIPE_URL+recipe.id,
             )
             setFavour(!favour)
+            refreshComponent()
             if (favour) {
                 setNbFavour(nbFavour + 1)
             } else {
@@ -118,7 +134,7 @@ export default function RecipeCard({recipe}){
         </div>
         {recipe?.chief?.pseudo && <div className="recipe-author">
             <img src="../../../public/img/top-chiefs/author.png"  className="author-image"/>
-            <span className="title">Written by {recipe.chief.pseudo}</span>
+            <span className="title">Written by {created? "vous" : recipe.chief.pseudo}</span>
         </div>}
         <div className="recipe-stats">
             <span className="comments">{favour? <FontAwesomeIcon icon={faBookmark} onClick={changeFavour}/> : <FontAwesomeIcon icon={fv} onClick={changeFavour}/>} {nbFavour}</span>
@@ -126,7 +142,7 @@ export default function RecipeCard({recipe}){
             <span className="likes"> {like? <FontAwesomeIcon icon={faHeart} onClick={changeLike}/> : <FontAwesomeIcon icon={f} onClick={changeLike}/>} {nbLike}</span>
         </div>
         {
-            auth.username === recipe?.chief?.email &&
+            created &&
                 <div className="action">
                     <button type="submit" className="edit"><Link to={`/dash/new-recipe/${recipe.id}`}>Edit</Link></button>
                     <button type="submit" onClick={deleteRecipe} className="delete">Delete</button>

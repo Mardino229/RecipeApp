@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import {MY_FAVOURITES_RECIPE_URL, RECIPE_URL} from "../../constants/index.jsx";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate.jsx";
 import {useNavigate} from "react-router-dom";
+import {faPowerOff, faQuestion} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import RecipeCard from "../../components/DashboardComponents/RecipeCard.jsx";
 
 function FavouritesPage() {
@@ -53,7 +55,12 @@ function FavouritesPage() {
             {myFavourites?.length
                 ? myFavourites.map((recipe, index) => (
                     <RecipeCard key={index} recipe={recipe}/>
-                )) : <h1>No favourites recipes</h1>
+                )) : (
+                    <div className="no">
+                        <FontAwesomeIcon className="quest" icon={faQuestion}/>
+                        <h1 className="noRecipe">No favourites recipes</h1>
+                    </div>)
+
             }
         </div>
     )

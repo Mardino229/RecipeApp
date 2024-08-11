@@ -1,5 +1,4 @@
 import {
-    BrowserRouter as Router,
     Routes,
     Route
 } from "react-router-dom"
@@ -31,7 +30,7 @@ function DashboardRoutes() {
                     <Route path="*" element={<NotFoundPage/>}/>
                 </Routes>
             </div>
-            <Footer/>
+            {/*<Footer/>*/}
         </>
     )
 }

@@ -31,11 +31,11 @@ function Header() {
         //     path: "/dash/new-recipe",
         //     icon: faPlus
         // },
-        {
-            name: "Settings",
-            path: "/dash/settings",
-            icon: faGears
-        },
+        // {
+        //     name: "Settings",
+        //     path: "/dash/settings",
+        //     icon: faGears
+        // },
     ]
 
     const signOut = async () => {
@@ -60,9 +60,9 @@ function Header() {
                         </Link>
                     ))}
                     <button onClick={signOut}><FontAwesomeIcon icon={faPowerOff}/></button>
-                    <Link className={location.pathname === "Settings" ? "active" : ""} to="/Settings">
-                        <FontAwesomeIcon icon={faGears}/>
-                    </Link>
+                    {/*<Link className={location.pathname === "Settings" ? "active" : ""} to="/dash/settings">*/}
+                    {/*    <FontAwesomeIcon icon={faGears}/>*/}
+                    {/*</Link>*/}
                 </div>
                 <div className="nav-links2">
                     {links.map(link => (

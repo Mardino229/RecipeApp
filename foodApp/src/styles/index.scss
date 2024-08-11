@@ -24,20 +24,15 @@
   box-sizing: border-box;
 }
 
-body {
-  display: grid;
-  grid-template-rows: 1fr auto;
-}
+
 
 body{
   font-size: var(--font-size);
   font-family: 'Roboto', sans-serif;
   padding-top: 55px;
   background-color: var(--background-light);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
 }
+
 #main {
   flex: 1;
 }
@@ -191,6 +186,7 @@ img{
 }
 .container {
   padding-inline: 26vw;
+
 }
 .container2 {
   padding-inline: 25vw;

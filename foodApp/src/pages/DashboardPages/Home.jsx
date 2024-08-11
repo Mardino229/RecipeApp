@@ -1,9 +1,11 @@
 import PreviousSearches from "../../components/LandingComponents/PreviousSearches.jsx";
 import RecipeCard from "../../components/DashboardComponents/RecipeCard.jsx";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate.jsx";
 import {CHIEF_URL, RECIPE_URL} from "../../constants/index.jsx";
 import {useLocation, useNavigate} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faQuestion} from "@fortawesome/free-solid-svg-icons";
 export default function Home(){
 
     //         authorImg: "/img/top-chiefs/img_5.jpg",
@@ -52,9 +54,12 @@ export default function Home(){
             <PreviousSearches />
             <div className="recipes-container">
                 {recipes?.length
-                ? recipes.map((recipe, index) => (
-                    <RecipeCard key={index} recipe={recipe}/>
-                    )) : <h1>No recipes</h1>
+                    ? recipes.map((recipe, index) => (
+                        <RecipeCard key={index} recipe={recipe}/>
+                    )) : <div className="no">
+                        <FontAwesomeIcon className="quest" icon={faQuestion}/>
+                        <h1 className="noRecipe">No recipes in news</h1>
+                    </div>
                 }
             </div>
         </div>
