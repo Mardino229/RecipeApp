@@ -58,7 +58,7 @@ function FavouritesPage() {
                 )) : (
                     <div className="no">
                         <FontAwesomeIcon className="quest" icon={faQuestion}/>
-                        <h1 className="noRecipe">No favourite recipes</h1>
+                        <h1 className="noRecipe">No favourites recipes</h1>
                     </div>)
 
             }
