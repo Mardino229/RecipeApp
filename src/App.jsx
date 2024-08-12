@@ -14,7 +14,7 @@ import PersistLogin from "./components/DashboardComponents/PersistLogin.jsx";
 function App() {
     return (
         <>
-            <Router>
+            <Router  basename="/RecipeApp">
                 <Routes>
                     <Route path="*" element={<LandingRoute />} />
                     <Route element={<PersistLogin/>}>
