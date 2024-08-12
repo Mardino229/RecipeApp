@@ -11,7 +11,7 @@ export default function Navbar(){
     const links = [
         {
             name: "Home",
-            path: "/recipeapp/",
+            path: "/RecipeApp/",
             icon: faHome
         },
         // {
@@ -21,7 +21,7 @@ export default function Navbar(){
         // },
         {
             name: "Login",
-            path: "/recipeapp/login",
+            path: "/RecipeApp/login",
             icon: faRightToBracket
         }
 

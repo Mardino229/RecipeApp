@@ -16,10 +16,10 @@ function App() {
         <>
             <Router>
                 <Routes>
-                    <Route path="/recipeapp/*" element={<LandingRoute />} />
+                    <Route path="/RecipeApp/*" element={<LandingRoute />} />
                     <Route element={<PersistLogin/>}>
                         <Route element={<RequireAuth allowedRoles={ROLE_USER} />}>
-                            <Route path="recipeapp/dash/*" element={<DashboardRoute />} />
+                            <Route path="/RecipeApp/dash/*" element={<DashboardRoute />} />
                         </Route>
                     </Route>
                 </Routes>
