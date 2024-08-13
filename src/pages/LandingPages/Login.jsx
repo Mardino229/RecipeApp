@@ -124,7 +124,8 @@ export default function Login() {
                             <label htmlFor="persist" >Trust this Device</label>
                         </div>
                         <div className="login-links">
-                            <a href="/RecipeApp/forgot-password">Forgot password?</a>
+                            {/*<a href="/RecipeApp/forgot-password">Forgot password?</a>*/}
+                            <Link to="/forgot-password">Forgot password?</Link>
                             <Link to="/signup">Need of account?</Link>
                         </div>
                     </form>)}
