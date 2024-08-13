@@ -15,7 +15,7 @@ export const LAST_NAME_REGEX =
 export const DATE_OF_BIRTH_REGEX =
     /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
 
-export const BASE_URL = " https://01d7-197-234-221-231.ngrok-free.app";
+export const BASE_URL = "https://12ab-197-234-221-231.ngrok-free.app";
 
 export const REGISTER_URL = '/register';
 
