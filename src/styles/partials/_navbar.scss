@@ -27,14 +27,13 @@
   }
   .nav-links , .nav-links2{
     button{
+      margin-inline: 1em;
       svg{
         color: var(--primary-color);
         padding-inline: 5px;
         width: 1.5em;
+        cursor: pointer;
       }
-      cursor: pointer;
-      margin-inline: 1em;
-
     }
     a{
       margin-left: 1em;

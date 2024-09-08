@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import {faHeart, faBookmark} from "@fortawesome/free-regular-svg-icons";
-import {faHeart as f} from "@fortawesome/free-solid-svg-icons";
+import {faHeart as f, faShare, faCheck} from "@fortawesome/free-solid-svg-icons";
 import {faBookmark as fv} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useEffect, useState} from "react";
@@ -31,6 +31,18 @@ export default function RecipeCard({recipe}){
 
     const [favour, setFavour] = useState(true)
     const [nbFavour, setNbFavour] = useState(recipe.nbFavourite)
+
+    const [copied, setCopied] = useState(false);
+    const copyToClipboard = (text) => {
+        navigator.clipboard.writeText(text)
+            .then(() => {
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000); // Réinitialiser après 2 secondes
+            })
+            .catch((err) => {
+                console.error("Erreur lors de la copie : ", err);
+            });
+    }
 
     useEffect( () => {
         async function hasLike() {
@@ -133,11 +145,24 @@ export default function RecipeCard({recipe}){
             <img src={`http://localhost:9084/${recipe.imageUrl}`} alt={recipe.title} className="recipe-image"/>
         </div>
         {recipe?.chief?.pseudo && <div className="recipe-author">
-            <img src="../../../public/img/top-chiefs/author.png"  className="author-image"/>
-            <span className="title">Written by {created? "vous" : recipe.chief.pseudo}</span>
+            <div className="recipe-author">
+                <img src="https://th.bing.com/th/id/OIP.lPnYcTsf7n7Pd6c9BwLQUQHaFj?rs=1&pid=ImgDetMain" className="author-image"/>
+                <span className="title">Written by {created ? "you" : recipe.chief.pseudo}</span>
+            </div>
+            {copied?
+                <>
+                    <div className="toast">
+                        Lien copié dans le presse-papier !
+                    </div>
+                    <FontAwesomeIcon icon={faCheck}/>
+
+                </>
+                :
+                <FontAwesomeIcon icon={faShare} beat onClick={() => copyToClipboard(window.location.href+`/recipe/${recipe.id}`)} />
+            }
         </div>}
         <div className="recipe-stats">
-            <span className="comments">{favour? <FontAwesomeIcon icon={faBookmark} onClick={changeFavour}/> : <FontAwesomeIcon icon={fv} onClick={changeFavour}/>} {nbFavour}</span>
+            <span className="comments">{favour ? <FontAwesomeIcon icon={faBookmark} onClick={changeFavour}/> : <FontAwesomeIcon icon={fv} onClick={changeFavour}/>} {nbFavour}</span>
             <Link to={`/dash/recipe/${recipe.id}`} className="btn"> VIEW RECIPE </Link>
             <span className="likes"> {like? <FontAwesomeIcon icon={faHeart} onClick={changeLike}/> : <FontAwesomeIcon icon={f} onClick={changeLike}/>} {nbLike}</span>
         </div>

@@ -41,15 +41,15 @@
             color: white;
             font-size: 1em;
             font-weight: bold;
+            transition: width .5s;
             span{
                 display: none;
             }
-            transition: width .5s;
             &:hover{
+                width: 200px;
                 span{
                     display: inline;
                 }
-                width: 200px;
             }
         }
     }
@@ -116,7 +116,7 @@
 
 .recipe-image-container {
     width: 100%;
-    height: 180px;
+    height: 100%;
     background-color: #f9f9f9;
     display: flex;
     align-items: center;
@@ -135,10 +135,21 @@
 .recipe-author {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 16px;
     .title{
         font-weight: bold;
         color: #777;
+    }
+    svg{
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        padding: .4em;
+        color: #95a5a6;
+        :hover{
+
+        }
     }
 }
 
@@ -162,6 +173,19 @@
     span{
         padding-right: .2em;
     }
+}
+
+.toast{
+    position: fixed;
+    right: 60px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
+    animation: fadeIn 0.5s, fadeOut 0.5s 1.5s, getAnimationDuration(.5s) popOut forwards
 }
 
 .comments, .likes {
