@@ -55,6 +55,51 @@
     }
 
 }
+.recipe-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    svg{
+        width: 1.5em;
+        height: 1.5em;
+        color: #d35400;
+        cursor: pointer;
+    }
+}
+
+.act{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    .btn{
+        cursor: pointer;
+    }
+    svg{
+        padding-left: 1em;
+        width: 1.2em;
+        height: 1.2em;
+    }
+}
+
+@media screen and (max-width: 498px) {
+    .act{
+        .btn:first-child{
+            margin-bottom: 1em;
+        }
+    }
+}
+
+.recipe-download{
+    margin: auto;
+    cursor: pointer;
+    svg{
+        padding-left: 1em;
+        width: 1.2em;
+        height: 1.2em;
+    }
+}
 .recipe-card {
     border: 1px solid #ddd;
     border-radius: 8px;

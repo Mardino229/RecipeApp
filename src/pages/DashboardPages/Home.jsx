@@ -12,7 +12,8 @@ export default function Home(){
     //     }
     // ].sort(() => Math.random() - 0.5)
 
-    const [recipes, setRecipe] = useState();
+    const [recipes, setRecipe] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
     const location = useLocation();
@@ -49,16 +50,21 @@ export default function Home(){
         }
     }, []);
 
+
+    const filteredRecipes = recipes.filter((recipe) =>
+        recipe.title.toLowerCase().includes(searchTerm.toLowerCase().trim())
+    );
+
     return (
         <div>
-            <PreviousSearches />
+            <PreviousSearches search={setSearchTerm} />
             <div className="recipes-container">
-                {recipes?.length
-                    ? recipes.map((recipe, index) => (
+                {filteredRecipes?.length
+                    ? filteredRecipes.map((recipe, index) => (
                         <RecipeCard key={index} recipe={recipe}/>
                     )) : <div className="no">
                         <FontAwesomeIcon className="quest" icon={faQuestion}/>
-                        <h1 className="noRecipe">No recipes in news</h1>
+                        <h1 className="noRecipe">No recipes</h1>
                     </div>
                 }
             </div>

@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import {faHeart, faBookmark} from "@fortawesome/free-regular-svg-icons";
-import {faHeart as f, faShare, faCheck} from "@fortawesome/free-solid-svg-icons";
+import {faHeart as f, faShare, faCheck, faPrint} from "@fortawesome/free-solid-svg-icons";
 import {faBookmark as fv} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useEffect, useState} from "react";
@@ -13,6 +13,7 @@ import {
 } from "../../constants/index.jsx";
 import useAuth from "../../hooks/useAuth.jsx";
 import {axiosPrivate} from "../../services/axios.jsx";
+import RecipePdf from "./RecipePdf.jsx";
 
 export default function RecipeCard({recipe}){
     const [like, setLike] = useState(true)
@@ -139,8 +140,13 @@ export default function RecipeCard({recipe}){
 
     return (
     <div className="recipe-card" key={key}>
-        <h2 className="recipe-title">{recipe.title}</h2>
-        <p className="recipe-description">{recipe.description}</p>
+        <div className="recipe-header">
+            <div>
+                <h2 className="recipe-title">{recipe.title}</h2>
+                <p className="recipe-description">{recipe.description}</p>
+            </div>
+            {/*<RecipePdf recipe={recipe}/>*/}
+        </div>
         <div className="recipe-image-container">
             <img src={`http://localhost:9084/${recipe.imageUrl}`} alt={recipe.title} className="recipe-image"/>
         </div>

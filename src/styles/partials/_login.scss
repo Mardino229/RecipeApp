@@ -9,9 +9,35 @@
   animation: getAnimationDuration(.8s) popOut forwards;
 }
 
+
+
 .login-form {
   display: flex;
+  width: 100%;
   flex-direction: column;
+}
+
+@media screen and (min-width:650px) {
+  .signup{
+    width: 100%;
+  }
+  .flex {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .sign{
+    width: 84%;
+    margin: auto;
+  }
+}
+@media screen and (max-width: 650px) {
+  .signup{
+    width: 100%;
+  }
 }
 
 .login-form h2 {
@@ -21,6 +47,7 @@
 
 .form-group {
   margin-bottom: 15px;
+  width: 100%;
 }
 
 .form-group label {
