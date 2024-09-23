@@ -1,6 +1,5 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import React, {useEffect, useRef, useState} from "react";
-import html2pdf from 'html2pdf.js';
 import useAxiosPrivate from "../../hooks/useAxiosPrivate.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faDownload, faPrint, faShare} from "@fortawesome/free-solid-svg-icons";
@@ -9,8 +8,6 @@ export default function RecipeView() {
     const { id } = useParams();
     const [recipe, setRecipe] = useState(null);
     const axiosPrivate = useAxiosPrivate();
-    const navigate = useNavigate();
-    const [success, setSuccess] = useState(false);
     const pdfRef = useRef();
     const [copied, setCopied] = useState(false);
 
@@ -23,7 +20,6 @@ export default function RecipeView() {
                 const response = await axiosPrivate.get(`/recipe/${id}`, {
                     signal: controller.signal
                 });
-                setSuccess(true);
                 console.log(response.data);
                 if (isMounted) {
                     setRecipe(response.data);

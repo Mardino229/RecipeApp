@@ -13,7 +13,6 @@ import {
 } from "../../constants/index.jsx";
 import useAuth from "../../hooks/useAuth.jsx";
 import {axiosPrivate} from "../../services/axios.jsx";
-import RecipePdf from "./RecipePdf.jsx";
 
 export default function RecipeCard({recipe}){
     const [like, setLike] = useState(true)
@@ -182,13 +181,3 @@ export default function RecipeCard({recipe}){
     </div>
     )
 }
-
-// <div className="product-card">
-//     <img src={recipe.image} alt="{name}" className="product-image"/>
-//     <h3 className="product-name">{recipe.title}</h3>
-//     <p className="product-description">{recipe.title}</p>
-//     <p className="product-price">{recipe.title}</p>
-//     <div className="product-actions">
-//         <Link to="/dash/recipe" className="btn">VIEW RECIPE</Link>
-//     </div>
-// </div>

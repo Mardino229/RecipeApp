@@ -1,21 +1,18 @@
 import CustomImage from "../LandingComponents/CustomImage.jsx"
 import {Link, useLocation} from "react-router-dom";
 import {faHeart, faBookmark} from "@fortawesome/free-regular-svg-icons";
-import {faHeart as f, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faHeart as f} from "@fortawesome/free-solid-svg-icons";
 import {faBookmark as fv} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useState} from "react";
 import React from "react";
-import {BASE_URL, RECIPE_URL} from "../../constants/index.jsx";
-import useAuth from "../../hooks/useAuth.jsx";
+import {RECIPE_URL} from "../../constants/index.jsx";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate.jsx";
 
 export default function RecipeOwn({recipe}){
     const [like, setLike] = useState(true)
     const [nblike, setNbLike] = useState(15)
     const axiosPrivate = useAxiosPrivate();
-
-    const location = useLocation();
 
     const [favour, setFavour] = useState(true)
     const [nbFavour, setNbFavour] = useState(15)
