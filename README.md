@@ -1,4 +1,4 @@
-# CookHub (RecipeApp)
+# CookHub FrontEnd (RecipeApp)
 
 ## Home Page
 ![Screenshot of RecipeApp](./public/recipeapp.png)
@@ -9,6 +9,8 @@
 
 Cookhub est une application de gestion et de partage de recettes développée en React. Elle permet 
 aux utilisateurs de créer, consulter, liker, télecharger et ajouter des recettes à leurs favoris.
+
+[Voir une demo](https://mardino229.github.io/RecipeApp/)
 
 ### Prérequis 
 
@@ -37,11 +39,11 @@ npm run dev
 Suivez ce [lien](https://github.com/Mardino229/RecipeAppBack) pour installer et configurer le back de l'application
 
 ### Configuration du front
-
+`
 - Accéder au fichier index.js dans le repertoire src/constants
 
 - Rechercher la variable BASE_URL et mettez le lien du backend
-
+`
 ## Technologies utilisées 
  - React
  - Vite
@@ -57,7 +59,7 @@ Suivez ce [lien](https://github.com/Mardino229/RecipeAppBack) pour installer et 
  - Télecharger vos recettes préférés sous format PDF
  - Gestion des utilisateurs et authentification
 
-Consultez mon portfolio [ici]() 😊😜😏
+Consultez mon portfolio [ici](https://mardino229.github.io/myportfolio/) 😊😜😏
 
 
 

@@ -87,7 +87,7 @@ export default function Login() {
                     </section>):
                 (
                     <form className="login-form" onSubmit={handleSubmit}>
-                        <h2>Login to your account</h2>
+                        <h2>Login</h2>
                         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
